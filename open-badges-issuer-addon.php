@@ -283,7 +283,7 @@ class BadgeOS_OpenBadgesIssuer {
 	public function registered_email($user_id = 0){
 		$user_id = ($user_id) ? $user_id : get_current_user_id();
 		$email_alt_field = get_option( 'open_badges_issuer_alt_email');
-		if ($email_alt_field !== "" && get_user_meta( $user_id, $email_alt_field, TRUE) !== ""){
+		if (!empty($email_alt_field) && get_user_meta( $user_id, $email_alt_field, TRUE) !== ""){
 			return get_user_meta( $user_id, $email_alt_field, TRUE);
 		} else {
 			$user = get_userdata( $user_id );
